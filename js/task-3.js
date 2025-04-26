@@ -1,13 +1,24 @@
-function checkForSpam(message) {
-  const lowerCaseMessage = message.toLowerCase();
+const profile = {
+  username: "Jacob",
+  playTime: 300,
 
-  return lowerCaseMessage.includes("spam") || lowerCaseMessage.includes("sale");
-}
+  changeUsername(newName) {
+    this.username = newName;
+  },
 
-console.log(checkForSpam("Latest technology news"));
-console.log(checkForSpam("JavaScript weekly newsletter"));
-console.log(checkForSpam("Get best sale offers now!"));
-console.log(checkForSpam("Amazing SalE, only tonight!"));
-console.log(checkForSpam("Trust me, this is not a spam message"));
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!"));
-console.log(checkForSpam("[SPAM] How to earn fast money?"));
+  updatePlayTime(hours) {
+    this.playTime += hours;
+  },
+
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
+};
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
